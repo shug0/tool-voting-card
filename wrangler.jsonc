@@ -1,0 +1,9 @@
+// Worker Cloudflare sans code : il sert les fichiers statiques de dist/.
+{
+  "name": "vote",
+  "compatibility_date": "2026-10-29",
+  "assets": {
+    "directory": "./dist"
+  },
+  "routes": [{ "pattern": "vote.needacoffee.fr", "custom_domain": true }]
+}
