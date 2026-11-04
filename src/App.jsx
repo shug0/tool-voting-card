@@ -2,23 +2,24 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { VotingCard } from "./assets/voting-card.jsx";
 
+function VoterCounterButton({ count, onSelect }) {
+  return (
+    <button
+      className="bg-black text-white text-xl font-bold uppercase flex h-full justify-center items-center flex-1"
+      onClick={() => onSelect(count)}
+    >
+      {count}
+    </button>
+  );
+}
+
+VoterCounterButton.propTypes = {
+  count: PropTypes.number.isRequired,
+  onSelect: PropTypes.func.isRequired,
+};
+
 function App() {
   const [voteCount, setVoteCount] = useState(1);
-
-  function VoterCounterButton({ count }) {
-    return (
-      <button
-        className="bg-black text-white text-xl font-bold uppercase flex h-full justify-center items-center flex-1"
-        onClick={() => setVoteCount(count)}
-      >
-        {count}
-      </button>
-    );
-  }
-
-  VoterCounterButton.propTypes = {
-    count: PropTypes.number.isRequired,
-  };
 
   return (
     <main className="w-screen h-screen flex flex-col bg-black p-8 pb-2">
@@ -29,9 +30,9 @@ function App() {
       </div>
 
       <footer className="flex h-20">
-        <VoterCounterButton count={1} />
-        <VoterCounterButton count={2} />
-        <VoterCounterButton count={3} />
+        <VoterCounterButton count={1} onSelect={setVoteCount} />
+        <VoterCounterButton count={2} onSelect={setVoteCount} />
+        <VoterCounterButton count={3} onSelect={setVoteCount} />
       </footer>
     </main>
   );
